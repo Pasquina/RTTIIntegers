@@ -1,5 +1,5 @@
 # RTTIOrdinals
-Utility Console App to Display Ordinal RTTI Properties
+Utility Console App to Display RTTI Properties of Delphi Ordinal Types
 ## Overview
 This is a short Delphi Console application that displays a number of properties about types. The information is obtained using RTTI (Run Time Type Information) methods and then displayed used a Writeln procedure. Investigation has been limited to Ordinal types, but a couple of rogue types are also included with limited success.
 
