@@ -6,6 +6,8 @@ This is a short Delphi Console application that displays a number of properties 
 The display appears as a series of lines that can be copied and pasted into a .csv file for import into Excel or other program that reads .csv files. From there, it can be manipulated to serve other purposes.
 
 It should also be mentioned that one of the reasons for writing this short program was to be able to run it both as a 32-bit Windows applicaton *and* as a 64-bit application. The results are different for some of Delphi's types. This difference is one of the main benefits of examining both sets of RTTI output.
+
+This program was developed using Emarcadero RAD Studio 10.4.1 (Sydney).
 ## Output
 Output consists of one line of text per type queried. Type information is obtained by using the `GetType` method of the RTTI.
 ### Type Name
