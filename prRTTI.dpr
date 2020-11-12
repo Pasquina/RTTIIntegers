@@ -1,5 +1,4 @@
 program prRTTI;
-
 {
 MIT License
 
@@ -27,6 +26,7 @@ SOFTWARE.
 {$APPTYPE CONSOLE}
 
 {$R *.res}
+{$M+}
 
 uses
   System.SysUtils, System.RTTI, System.TypInfo, System.Types;
@@ -91,23 +91,28 @@ begin
       end;
     TTypeKind.tkFloat:
       with TRTTIFloatType(ARTTIType) do
-        begin
-          LName := Name;
-          LKind := TypeKind;
-          LMinValue := 0;
-          LMaxValue := 0;
-          LSize := TypeSize;;
-          LMinString := '';
-          LMaxString := '';
-        end
-    else
       begin
-        LName := 'Unsupported';
-        LKind := ARTTIType.TypeKind;
+        LName := Name;
+        LKind := TypeKind;
         LMinValue := 0;
         LMaxValue := 0;
-        LSize := 0;
+        LSize := TypeSize;;
+        LMinString := '';
+        LMaxString := '';
+      end
+  else
+    begin
+      with TRTTIPointerType(ARTTIType) do
+      begin
+        LName := Name;
+        LKind := ARTTIType.TypeKind;
+        LSize := TypeSize;
+        LMinValue := 0;
+        LMaxValue := 0;
+        LMinString := '';
+        LMaxString := '';
       end;
+    end;
   end;
 
   WriteLn(Format('%s,%s,%u,%u,%s,%s', [AStatedType, LName, Ord(LKind), LSize, LMinString, LMaxString]));
@@ -130,13 +135,13 @@ begin
     LogType('Int16', LRTTIContext.GetType(TypeInfo(Int16)));
     LogType('Word', LRTTIContext.GetType(TypeInfo(Word)));
     LogType('UInt16', LRTTIContext.GetType(TypeInfo(UInt16)));
-    LogType('FixedInt', LRTTIContext.GetType(TypeInfo(FixedInt)));
-    LogType('FixedUInt', LRTTIContext.GetType(TypeInfo(FixedUInt)));
     LogType('Integer', LRTTIContext.GetType(TypeInfo(Integer)));
     LogType('Int32', LRTTIContext.GetType(TypeInfo(Int32)));
-    LogType('DWORD', LRTTIContext.GetType(TypeInfo(DWORD)));
+    LogType('FixedInt', LRTTIContext.GetType(TypeInfo(FixedInt)));
     LogType('Cardinal', LRTTIContext.GetType(TypeInfo(Cardinal)));
     LogType('UInt32', LRTTIContext.GetType(TypeInfo(UInt32)));
+    LogType('FixedUInt', LRTTIContext.GetType(TypeInfo(FixedUInt)));
+    LogType('DWORD', LRTTIContext.GetType(TypeInfo(DWORD)));
     LogType('Int64', LRTTIContext.GetType(TypeInfo(Int64)));
     LogType('UInt64', LRTTIContext.GetType(TypeInfo(Uint64)));
     LogType('Pointer', LRTTIContext.GetType(TypeInfo(Pointer)));
