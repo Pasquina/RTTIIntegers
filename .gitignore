@@ -62,6 +62,9 @@ __history/
 __recovery/
 *.~*
 
+# Linux Binaries
+Linux64/
+
 # Castalia statistics file (since XE7 Castalia is distributed with Delphi)
 *.stat
 
